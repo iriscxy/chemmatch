@@ -1,0 +1,6 @@
+# Ignore .DS_Store files everywhere
+**/.DS_Store
+
+# Ignore .idea folders everywhere
+**/.idea/
+
