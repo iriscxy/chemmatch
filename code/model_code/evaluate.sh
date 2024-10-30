@@ -1,0 +1,1 @@
+python eval_text.py --dataset set1_ver1 --num_classes 3 --load_path saved_models/usb_nlp/chemmatch/model_best.pth --net bert_base_uncased --algorithm chemmatch
