@@ -68,3 +68,5 @@ After training, use `evaluate.sh` to evaluate the model on the test data:
 ```bash
 bash code/model_code/evaluate.sh
 ```
+
+We also provide one checkpoint file in [this link](https://drive.google.com/file/d/15TbE3_yGzCIV5OKwoxsBFvroinNwm8nk/view?usp=sharing).
