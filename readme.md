@@ -1,72 +1,130 @@
-# Code and data for paper "Unveiling the Power of Language Models in Chemical Research Question Answering".
+# Code and Data for Paper: *"Unveiling the Power of Language Models in Chemical Research Question Answering"*
 
-## Project Overview
+## 📌 **Project Overview**
 
-This project provides code for data collection and model training/testing. The folder structure includes two main directories:
+This repository contains the code, data, and instructions for reproducing the experiments presented in the paper. It provides scripts for data collection, preprocessing, model training, and evaluation.  
 
-- **`code`**: Contains scripts for data collection and model training/evaluation.
-- **`data`**: Includes `test.json`, a JSON file with test data, and `model_best.pth`, a pre-trained model checkpoint.
+### 📁 **Folder Structure:**
+- **`code/`**: Scripts for data collection, data preprocessing, model training, and evaluation.  
+- **`data/`**: Includes:
+  - **`test.json`**: Test dataset.
+  - **`model_best.pth`**: A pre-trained model checkpoint.
 
-## Data Collection Code
+---
 
-The data collection scripts, located in `code/data_collection_code`, are designed to collect data from five different websites. Each script is numbered to indicate the order in which it should be run. 
+## 🚀 **Getting Started**
 
-1. **Elsevier** (`elsevier/`): 
-   - `1cursor.py`: Initial data fetching.
-   - `2extract.py`: Data extraction.
+### 1. **Clone the Repository**
+```bash
+git clone <repo-link>
+cd <repo-name>
+```
 
-2. **Lens** (`lens/`): 
-   - `1lens_cursor_bio.py`, `1lens_cursor_cata.py`, `1lens_cursor_elec.py`, `1lens_cursor_enginner.py`: These scripts are for fetching data across different categories (e.g., biology, catalog, electronics, engineering).
-   
-3. **S2ORC** (`s2orc/`):
-   - `1abstracts.py`: Fetch abstracts.
-   - `1s2orc.py`: Main data fetching.
-   - `2extract_paper.py`: Paper extraction.
-
-4. **Scopus** (`scopus/`): 
-   - `1cursor.py`: Initial data fetching.
-   - `2extract.py`: Data extraction.
-
-5. **Springer** (`springer/`):
-   - `1cursor.py`: Initial data fetching.
-   - `2extract.py`: Data extraction.
-   
-**Note**: To collect data, you need API keys for the respective websites.
-
-
-## Model Code
-
-The model code, located in `code/model_code`, includes all necessary files for training and evaluating the model. Follow the steps below to set up the environment, preprocess the data, train the model, and evaluate it.
-
-### 1. Setup Environment
-
-Install dependencies listed in `requirements.txt`:
-
+### 2. **Install Dependencies**
 ```bash
 pip install -r code/model_code/requirements.txt
 ```
 
-### 2. Data Preprocessing
-After collecting the dataset, use the code in the `preprocess/set1_ver1` folder to format the data as required by the model. This step will clean, organize, and transform the raw data into the structure needed for training and evaluation.
+---
 
-   - **For test data**: Run `generate_json_test.py` to process test data.
-   - **For labeled training data**: Run `generate_json_train_label.py` to process labeled training data.
-   - **For unlabeled training data**: Run `generate_json_train_unlabel.py` to process unlabeled training data.
+## 📚 **Data Collection**
 
-### 3. Training
+The data collection scripts are located in **`code/data_collection_code`** and support scraping data from five different websites. Make sure you have valid API keys for the respective data sources before running the scripts.
 
-Use `train.sh` to train the model. This script will initiate the training process with the preprocessed data:
+### 📁 **Data Sources and Scripts:**
+1. **Elsevier** (`elsevier/`):  
+   - `1cursor.py`: Initial data fetching.  
+   - `2extract.py`: Data extraction.  
 
+2. **Lens** (`lens/`):  
+   - Scripts for different categories:  
+     - `1lens_cursor_bio.py`  
+     - `1lens_cursor_cata.py`  
+     - `1lens_cursor_elec.py`  
+     - `1lens_cursor_enginner.py`  
+
+3. **S2ORC** (`s2orc/`):  
+   - `1abstracts.py`: Fetch abstracts.  
+   - `1s2orc.py`: Main data fetching.  
+   - `2extract_paper.py`: Extract papers from fetched data.  
+
+4. **Scopus** (`scopus/`):  
+   - `1cursor.py`: Initial data fetching.  
+   - `2extract.py`: Data extraction.  
+
+5. **Springer** (`springer/`):  
+   - `1cursor.py`: Initial data fetching.  
+   - `2extract.py`: Data extraction.  
+
+---
+
+## 🔄 **Data Preprocessing**
+
+After collecting the raw data, use the scripts in **`code/model_code/preprocess/set1_ver1`** to format the data for model training and evaluation.
+
+### 📌 **Steps:**
+1. **For Test Data**  
+   - Run:  
+     ```bash
+     python code/model_code/preprocess/set1_ver1/generate_json_test.py
+     ```
+
+2. **For Labeled Training Data**  
+   - Run:  
+     ```bash
+     python code/model_code/preprocess/set1_ver1/generate_json_train_label.py
+     ```
+
+3. **For Unlabeled Training Data**  
+   - Run:  
+     ```bash
+     python code/model_code/preprocess/set1_ver1/generate_json_train_unlabel.py
+     ```
+
+---
+
+## ⚙️ **Model Training**
+
+Use the provided **`train.sh`** script to initiate model training with the preprocessed data.
+
+### 🚀 **Run Training:**
 ```bash
 bash code/model_code/train.sh
 ```
 
-### 4. Evaluation
+- The training progress will be logged, and the best-performing model will be saved automatically as a checkpoint.
 
-After training, use `evaluate.sh` to evaluate the model on the test data:
+---
 
+## 📊 **Model Evaluation**
+
+Evaluate the trained model using the **`evaluate.sh`** script. The evaluation will generate performance metrics on the test data.
+
+### 🧪 **Run Evaluation:**
 ```bash
 bash code/model_code/evaluate.sh
 ```
 
-We also provide one checkpoint file in [this link](https://drive.google.com/file/d/15TbE3_yGzCIV5OKwoxsBFvroinNwm8nk/view?usp=sharing).
+You can also download the pre-trained model checkpoint from [this link](https://drive.google.com/file/d/15TbE3_yGzCIV5OKwoxsBFvroinNwm8nk/view?usp=sharing) for direct evaluation without training.
+
+---
+
+## 📌 **File Descriptions**
+| **File/Folder**          | **Description**                                                                                  |
+|-------------------------|--------------------------------------------------------------------------------------------------|
+| `code/data_collection_code` | Scripts to fetch and extract data from five websites.                                           |
+| `code/model_code`       | Contains scripts for model training, evaluation, and data preprocessing.                         |
+| `data/test.json`        | Test dataset used during evaluation.                                                             |
+| `data/model_best.pth`   | Checkpoint of the best-trained model.                                                            |
+| `train.sh`              | Script to initiate model training.                                                               |
+| `evaluate.sh`           | Script to evaluate the model using the test data.                                                |
+| `requirements.txt`      | List of Python dependencies required for running the project.                                    |
+
+---
+
+## 🔧 **Troubleshooting**
+- Ensure that you have API access and valid API keys for data collection from external sources.
+- If there are missing dependencies, verify that you installed all the packages listed in `requirements.txt`.
+- For issues during training or evaluation, check the log files generated by the `train.sh` and `evaluate.sh` scripts.
+
+
