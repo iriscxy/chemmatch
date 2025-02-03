@@ -8,7 +8,7 @@ This repository contains the code, data, and instructions for reproducing the ex
 - **`code/`**: Scripts for data collection, data preprocessing, model training, and evaluation.  
 - **`data/`**: Includes:
   - **`test.json`**: Test dataset.
-  - **`model_best.pth`**: A pre-trained model checkpoint.
+  - **`doi_list.txt`**: The DOI list.
 
 ---
 
@@ -115,7 +115,7 @@ You can also download the pre-trained model checkpoint from [this link](https://
 | `code/data_collection_code` | Scripts to fetch and extract data from five websites.                                           |
 | `code/model_code`       | Contains scripts for model training, evaluation, and data preprocessing.                         |
 | `data/test.json`        | Test dataset used during evaluation.                                                             |
-| `data/model_best.pth`   | Checkpoint of the best-trained model.                                                            |
+| `data/doi_list.txt`   | The DOI list of collected files.                                                        |
 | `train.sh`              | Script to initiate model training.                                                               |
 | `evaluate.sh`           | Script to evaluate the model using the test data.                                                |
 | `requirements.txt`      | List of Python dependencies required for running the project.                                    |
